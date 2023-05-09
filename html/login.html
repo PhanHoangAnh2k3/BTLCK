@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Đăng nhập</title>
+    <meta charset="UTF-8">
+    <style>
+      form {
+        margin: 0 auto;
+        width: 300px;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type=text], input[type=password] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+      }
+      input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Đăng nhập</h1>
+    <form id="loginForm" onsubmit="return checkLogin()">
+      <label for="username">Tên đăng nhập:</label>
+      <input type="text" id="username" name="username" pattern="(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{6,}" 
+             title="Tên đăng nhập phải có ít nhất 6 kí tự, bao gồm cả chữ và số">
+
+      <label for="password">Mật khẩu:</label>
+      <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+             title="Mật khẩu phải có ít nhất 8 kí tự, bao gồm cả chữ viết hoa, chữ thường và số">
+
+      <input type="submit" value="Đăng nhập">
+    </form>
+
+    <p>Nếu chưa có tài khoản, vui lòng <a href="../html/register.html">đăng ký</a>.</p>
+
+    <script>
+      function checkLogin() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        if (username == "" || password == "") {
+          alert("Vui lòng nhập đầy đủ thông tin đăng nhập.");
+          return false;
+        }
+        else {
+          // Kiểm tra thông tin đăng nhập của người dùng ở đây.
+          // Nếu thông tin không chính xác, hiển thị thông báo.
+          var isValidLogin = true; // Giả sử thông tin đăng nhập đúng.
+          if (!isValidLogin) {
+            alert("Tên đăng nhập hoặc mật khẩu không chính xác.");
+            return false;
+          }
+        }
+        window.location.href = "../index.html";
+        return false;
+      }
+    </script>
+  </body>
+</html>
